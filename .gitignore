@@ -1,0 +1,23 @@
+# Python cache
+_pycache_/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# SQLite database
+*.db
+
+# Flask migration cache
+migrations/_pycache_/
+
+# React build or node modules
+node_modules/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+
+# Log or text files
+*.log
+*.txt
