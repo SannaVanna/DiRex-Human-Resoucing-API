@@ -39,12 +39,7 @@ def createApp():
 
     app.config['SECRET_KEY'] = 'humanresourcingemployeesecretkey'
     app.config['DEBUG'] = True
-    # register UI/HTML routes from routes_main to avoid name collision with package `src.routes`
-    try:
-        from src.routes_main import routes as routes_bp
-        app.register_blueprint(routes_bp, url_prefix="/")
-    except Exception:
-        pass
+    app.register_blueprint(routes, url_prefix="/")
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(get_employee_bp, url_prefix="/api")
     app.register_blueprint(post_employee_bp, url_prefix="/api")
@@ -56,8 +51,7 @@ def createApp():
     #app.add_url_rule('/<int:id>', view_func=home_view, methods=['GET', 'PUT', 'DELETE'])
     # initialize DB/tables and default data
     try:
-        # import init_db from routes_main (UI routes) to avoid importing the package `src.routes`
-        from src.routes_main import init_db
+        from .routes import init_db
         with app.app_context():
             init_db()
     except Exception:
