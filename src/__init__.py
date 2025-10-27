@@ -11,19 +11,32 @@ from src.routes.put_employee import put_employee_bp
 from src.routes.delete_employee import delete_employee_bp
 
 
-app = Flask(__name__, static_folder="./templates/assets", static_url_path="/assets")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///employee.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#app = Flask(__name__, static_folder="./templates/assets", static_url_path="/assets")
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///employee.db'
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db.init_app(app)
-migrate = Migrate(app, db)
+#db.init_app(app)
+#migrate = Migrate(app, db)
 
-login_manager.init_app(app)
-login_manager.login_view = 'routes.login'
+#login_manager.init_app(app)
+#login_manager.login_view = 'routes.login'
 
-CORS(app)
+#CORS(app)
 
 def createApp():
+    app = Flask(__name__, static_folder="./templates/assets", static_url_path="/assets")
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///employee.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.init_app(app)
+    migrate = Migrate(app, db)
+
+    login_manager.init_app(app)
+    login_manager.login_view = 'routes.login'
+
+    CORS(app)
+
+
     app.config['SECRET_KEY'] = 'humanresourcingemployeesecretkey'
     app.config['DEBUG'] = True
     app.register_blueprint(routes, url_prefix="/")
