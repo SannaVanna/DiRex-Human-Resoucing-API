@@ -37,6 +37,7 @@ def createApp():
     CORS(app)
 
 
+
     app.config['SECRET_KEY'] = 'humanresourcingemployeesecretkey'
     app.config['DEBUG'] = True
     app.register_blueprint(routes, url_prefix="/")
