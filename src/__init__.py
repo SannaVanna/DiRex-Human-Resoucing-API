@@ -37,10 +37,9 @@ def createApp():
     CORS(app)
 
 
-
     app.config['SECRET_KEY'] = 'humanresourcingemployeesecretkey'
     app.config['DEBUG'] = True
-    app.register_blueprint(routes, url_prefix="/")
+    #app.register_blueprint(routes, url_prefix="/")
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(get_employee_bp, url_prefix="/api")
     app.register_blueprint(post_employee_bp, url_prefix="/api")
