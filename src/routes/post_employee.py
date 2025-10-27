@@ -21,11 +21,16 @@ def add_employee():
         return jsonify({'message': 'Employee with this email already exists'}), 400
 
     new_emp = Employee(
-        name=data['name'],
-        email=data['email'],
-        position=data['position'],
-        salary=data['salary']
+        employee_id = data['employee_id'],
+        name = data['name'],
+        email = data['email'],
+        department = data['department'],
+        position = data['position'],
+        salary = data['salary'],
+        remark = data.get('remark', ''),
+        created_at = data.get('created_at')
     )
+
     db.session.add(new_emp)
     db.session.commit()
     return jsonify({'message': 'Employee added successfully', 'employee': new_emp.to_dict()}), 201
